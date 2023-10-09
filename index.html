@@ -12,7 +12,10 @@
 
 </head>
 <body>
-  
+
+
+<div class="images">
+
 <div id="proportional_map"></div>
 
 <script type="text/javascript">
@@ -22,6 +25,18 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
+
+<div id="scatter_plot"></div>
+
+<script type="text/javascript">
+
+  var spec3 = "tsunami_scatter.vega";
+  vegaEmbed('#scatter_plot', spec3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+
+</div>
 
 </body>
 </html>
