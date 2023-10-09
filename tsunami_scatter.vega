@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 450,
+  "title": "Earthquake Magnitude vs Tsunami Magnitude",
+  "data": {
+    "url": "https://raw.githubusercontent.com/fing0002/FIT3179/Vega-Lite/tsunamis-2023.csv"
+  },
+    "params": [
+    {
+      "name": "Deaths_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 2000,
+        "step": 10,
+        "name": "Minimum Deaths: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.EarthquakeNanMagnitude > 0"},
+    {"filter": "datum.Deaths >= Deaths_Above"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "EarthquakeNanMagnitude",
+      "type": "quantitative",
+      "title": "Earthquake magnitude",
+      "scale": {"type": "linear", "domain": [0, 10]}
+    },
+    "y": {
+      "field": "TsunamiNanMagnitudeNan(Iida)",
+      "type": "quantitative",
+      "title": "Tsunami Magnitude",
+      "scale": {"type": "linear", "domain": [-10, 10]}
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "TotalNanDeaths",
+          "type": "quantitative",
+          "title": "Total deaths",
+          "scale": {
+            "type": "threshold",
+            "domain": [1, 10, 100, 1000, 100000, 200000],
+            "range": [10, 50, 150, 200, 300, 400]
+          },
+          "legend": {"format": ".1s"}
+        },
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Deaths", "type": "quantitative", "format": ","},
+          {"field": "TsunamiNanMagnitudeNan(Iida)", "type": "quantitative", "format": ","}
+          
+        ]
+      }
+    }
+  ]
+}
