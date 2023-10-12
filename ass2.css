@@ -1,0 +1,36 @@
+body {
+    background-color: #91D6FF 
+}
+
+h1 {
+    text-align: center;
+    color: #003F66;
+}
+
+p {
+    color:white;
+    margin-right: 10%;
+}
+
+
+.tsunami-text {
+    color:#003F66 ;
+}
+
+.page {
+    width: 60%;
+    margin-left: 20%;
+}
+
+
+#proportional_map {
+	top:10px;
+	bottom: 100px;
+    width: 83%;
+}
+
+#scatter_plot {
+	top:10px;
+	bottom: 100px;
+    width: 85%;
+}
