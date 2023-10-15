@@ -1,0 +1,108 @@
+body {
+    background-color: #91D6FF 
+}
+
+h1 {
+    text-align: center;
+    color: #003F66;
+}
+
+p {
+    color:#292F6F;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+#box {
+    background: white;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+
+.page {
+    width: 60%;
+    margin-left: 20%;
+    background: white;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px
+}
+
+.heading {
+    width: 60%;
+    margin-left: 20%;
+    background: white;
+    border-radius: 10px;
+    margin-top: 30px;
+    height: 70px;
+    padding-top: 1px;
+    padding-bottom: 10px;
+}
+
+
+#choropleth_map {
+	top:30px;
+	bottom: 100px;
+    width: 90%;
+    left: 20px;
+}
+
+#time_chart {
+    top:30px;
+	bottom: 100px;
+    width: 100%;
+    left: 20px;
+}
+
+#scatter_plots {
+	top:30px;
+	bottom: 100px;
+    width: 600px;
+    left: 20px;
+}
+
+#bump_chart {
+	top:30px;
+	bottom: 100px;
+    width: 100%;
+    left: 20px;
+}
+
+#donut_chart {
+	top:10px;
+	bottom: 100px;
+    width: 100%;
+    height: 200px;
+    left: 20px;
+    padding-bottom: 20px;
+}
+
+.developed-text {
+    color:#000C91  ;
+}
+
+.developing-text {
+    color: #32D3FF;
+}
+
+.japan-text {
+    color: #BC002D;
+}
+
+.swiss-text {
+    color: #FF6060;
+}
+
+.ice-text {
+    color: #02529C;
+}
+
+.italy-text {
+    color: #D532FF;
+}
+
+.swede-text {
+    color: #FFCD00;
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 180,
+  "title": "Top 5 countries by life expectancy",
+  "data": {
+    "url": "https://raw.githubusercontent.com/fing0002/FIT3179/Vega-Lite/Life_Expectancy_Data.csv"
+  },
+  "transform": [
+    {"filter": {"field": "Country", "oneOf": ["Japan", "Switzerland", "Iceland", "Italy", "Sweden"]}},
+    {
+    "sort": [
+      {"field": "Life expectancy ", "order": "descending"}
+    ],
+    "window": [{
+      "op": "rank",
+      "as": "rank"
+    }],
+    "groupby": ["Year"]
+  }
+  ],
+  "params":[
+    {
+    "name": "country_highlight",
+    "select": {"type": "point", "fields": ["Country"]},
+    "bind": "legend"
+    }
+  ],
+  "mark": {"type": "line", "orient": "vertical"},
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal", "timeUnit": "year", "title": "Year"},
+    "y": {"field": "rank", "type": "ordinal", "title":"Position"},
+    "color": {
+      "condition":{
+        "param": "country_highlight",
+        "field": "Country", "type": "nominal",
+        "scale": {
+          "domain": ["Japan", "Switzerland", "Iceland", "Italy", "Sweden"],
+          "range": ["#BC002D", "#FF6060", "#02529C", "#D532FF", "#FFCD00"]
+        }
+      },
+      "value": "#D3D3D3"
+    },
+    "tooltip": [
+      {"field": "Country", "type":"nominal"},
+      {"field": "Year", "type": "temporal", "timeUnit": "year", "title": "Year"},
+      {"field": "Life expectancy ", "type": "quantitative", "title":"Life expectancy"}
+    ]
+  }
+}

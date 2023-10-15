@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/fing0002/FIT3179/Vega-Lite/Life_Expectancy_Data.csv"
+  },
+  "repeat": [
+    "Income composition of resources",
+    "Adult Mortality",
+    "Schooling"
+  ],
+  "columns": 3,
+  "transform": [
+    {"filter": "datum['Life expectancy '] > 0"},
+    {"filter": "datum['Income composition of resources'] > 0"},
+    {"filter": "datum['Adult Mortality'] > 0"},
+    {"filter": "datum['Total expenditure'] > 0"}
+  ],
+  "spec": {
+    "selection": {
+      "status_highlight": {
+        "type": "multi",
+        "fields": ["Status"],
+        "bind": "legend"
+      }
+    },
+    "mark": "circle",
+    "encoding": {
+      "x": {"field": {"repeat": "repeat"}, "type": "quantitative"},
+      "y": {
+        "field": "Life expectancy ",
+        "type": "quantitative",
+        "title": "Life expectancy"
+      },
+      "color": {
+        "field": "Status",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Developed", "Developing"],
+          "range": ["#000C91", "#32D3FF"]
+        }
+      },
+      "opacity": {
+        "condition": {"selection": "status_highlight", "value": 0.6},
+        "value": 0.001
+      },
+      "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "Year", "type": "quantitative"}
+      ]
+    }
+  }
+}

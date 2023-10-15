@@ -1,0 +1,29 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/fing0002/FIT3179/Vega-Lite/Life_Expectancy_Data.csv"
+    },
+    "title":"Percentage of world that is developed",
+    "transform": [
+      {"window": [{
+        "op": "sum",
+        "field": "Status",
+        "as": "total_no"
+      }]
+      },
+      {"calculate": "((datum.Status=='developed') / datum.total_no) * 100", "as": "dev1_percentage"},
+      {"calculate": "((datum.Status=='developing') / datum.total_no) * 100", "as": "dev2_percentage"}
+    ],
+    "mark": {"type": "arc", "innerRadius": 50, "tooltip": true},
+    "encoding": {
+      "theta": {"field": "Status", "aggregate":"count", "type": "quantitative", "stack": "normalize"},
+      "color": {
+        "field": "Status", 
+        "type": "nominal",
+        "scale": {
+            "domain": ["Developed", "Developing"],
+            "range": ["#000C91", "#32D3FF"]
+        }
+      }
+    }
+  }

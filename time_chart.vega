@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 450,
+  "title": "Average life expectancy of developing and developed nations",
+  "data": {
+    "url": "https://raw.githubusercontent.com/fing0002/FIT3179/Vega-Lite/Life_Expectancy_Data.csv"
+  },
+  "mark": {
+    "type": "line",
+    "point": {
+      "filled": false,
+      "fill": "white"
+    }
+  },
+  "encoding": {
+    "x": {"timeUnit": "year", "field": "Year", "title": "Year"},
+    "y": {"field": "Life expectancy ", "aggregate":"mean", "type": "quantitative", "title": "Average Life Expectancy"},
+    "color": {
+      "field": "Status", "type": "nominal",
+      "scale": {
+        "domain": ["Developed", "Developing"],
+        "range": ["#000C91", "#32D3FF"]
+      }
+    },
+    "tooltip": [
+      {"field": "Year", "type":"temporal"},
+      {"field": "life_expectancy ", "type": "quantitative"}
+    ]
+  }
+}
